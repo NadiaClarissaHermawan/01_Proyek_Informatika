@@ -23,5 +23,5 @@
 # How to Kill Task :
 <pre>
 1) Open cmd, type : netstat -ano | findstr 8080
-2) type : taskkill /F /PID <task_id>
+2) type : taskkill /F /PID "task_id"
 </pre>
