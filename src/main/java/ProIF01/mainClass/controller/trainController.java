@@ -35,7 +35,7 @@ public class trainController {
     }
 
     //endpoint to view train detail by id
-    @GetMapping("/trains/:{id}")
+    @GetMapping("/trains/{id}")
     public ResponseEntity<train> viewTrainDetail(@PathVariable("id") Long id){
         Optional<train> trainDetail = trainRepository.findById(id);
         if(trainDetail.isPresent()){
