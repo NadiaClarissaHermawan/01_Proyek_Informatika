@@ -3,7 +3,7 @@ package ProIF01.mainClass.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="tutorials")
+@Table(name="trains")
 public class Train {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) //GenerationType.AUTO = auto increment
