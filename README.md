@@ -13,7 +13,14 @@
 - Membuat Rest-API 
 </pre>
 
-# How to Run :
+# Software & Environment Requirement :
+<pre>
+- JDK 
+- PostgreSQL
+- Maven
+</pre>
+
+# How to activate API :
 <pre>
 1) Open the project directory in cmd
 2) type mvn spring-boot:run 
