@@ -1,7 +1,12 @@
 package ProIF01.mainClass.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name="trains")
 public class train {
@@ -36,78 +41,6 @@ public class train {
         this.sharingTracks = sharingTracks;
         this.gradeCrossing = gradeCrossing;
         this.trainFrequency = trainFrequency;
-        this.amenities = amenities;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getDistanceBetweenStop() {
-        return distanceBetweenStop;
-    }
-
-    public void setDistanceBetweenStop(String distanceBetweenStop) {
-        this.distanceBetweenStop = distanceBetweenStop;
-    }
-
-    public String getMaxSpeed() {
-        return maxSpeed;
-    }
-
-    public void setMaxSpeed(String maxSpeed) {
-        this.maxSpeed = maxSpeed;
-    }
-
-    public Boolean getSharingTracks() {
-        return sharingTracks;
-    }
-
-    public void setSharingTracks(Boolean sharingTracks) {
-        this.sharingTracks = sharingTracks;
-    }
-
-    public Boolean getGradeCrossing() {
-        return gradeCrossing;
-    }
-
-    public void setGradeCrossing(Boolean gradeCrossing) {
-        this.gradeCrossing = gradeCrossing;
-    }
-
-    public String getTrainFrequency() {
-        return trainFrequency;
-    }
-
-    public void setTrainFrequency(String trainFrequency) {
-        this.trainFrequency = trainFrequency;
-    }
-
-    public String getAmenities() {
-        return amenities;
-    }
-
-    public void setAmenities(String amenities) {
         this.amenities = amenities;
     }
 
