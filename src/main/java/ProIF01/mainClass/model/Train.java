@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Table(name="trains")
-public class train {
+public class Train {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) //GenerationType.AUTO = auto increment.
     private Long id;
@@ -31,9 +31,9 @@ public class train {
     private String amenities;
 
     //must-have empty constructor
-    public train(){}
+    public Train(){}
 
-    public train(Long id, String name, String description, String distancebetweenstop, String maxspeed, Boolean sharingtracks, Boolean gradecrossing, String trainfrequency, String amenities) {
+    public Train(Long id, String name, String description, String distancebetweenstop, String maxspeed, Boolean sharingtracks, Boolean gradecrossing, String trainfrequency, String amenities) {
         this.id = id;
         this.name = name;
         this.description = description;
