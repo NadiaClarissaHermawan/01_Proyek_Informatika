@@ -17,44 +17,45 @@ public class train {
     private String name;
     @Column(name = "description")
     private String description;
-    @Column(name = "distanceBetweenStop")
-    private String distanceBetweenStop;
-    @Column(name = "maxSpeed")
-    private String maxSpeed;
-    @Column(name = "sharingTracks")
-    private Boolean sharingTracks;
-    @Column(name = "gradeCrossing")
-    private Boolean gradeCrossing;
-    @Column(name = "trainFrequency")
-    private String trainFrequency;
+    @Column(name = "distancebetweenstop")
+    private String distancebetweenstop;
+    @Column(name = "maxspeed")
+    private String maxspeed;
+    @Column(name = "sharingtracks")
+    private Boolean sharingtracks;
+    @Column(name = "gradecrossing")
+    private Boolean gradecrossing;
+    @Column(name = "trainfrequency")
+    private String trainfrequency;
     @Column(name = "amenities")
     private String amenities;
 
     //must-have empty constructor
     public train(){}
 
-    public train(String name, String description, String distanceBetweenStop, String maxSpeed, Boolean sharingTracks, Boolean gradeCrossing, String trainFrequency, String amenities){
+    public train(Long id, String name, String description, String distancebetweenstop, String maxspeed, Boolean sharingtracks, Boolean gradecrossing, String trainfrequency, String amenities) {
+        this.id = id;
         this.name = name;
         this.description = description;
-        this.distanceBetweenStop = distanceBetweenStop;
-        this.maxSpeed = maxSpeed;
-        this.sharingTracks = sharingTracks;
-        this.gradeCrossing = gradeCrossing;
-        this.trainFrequency = trainFrequency;
+        this.distancebetweenstop = distancebetweenstop;
+        this.maxspeed = maxspeed;
+        this.sharingtracks = sharingtracks;
+        this.gradecrossing = gradecrossing;
+        this.trainfrequency = trainfrequency;
         this.amenities = amenities;
     }
 
     @Override
     public String toString() {
-        return "Train{" +
+        return "train{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", distanceBetweenStop='" + distanceBetweenStop + '\'' +
-                ", maxSpeed='" + maxSpeed + '\'' +
-                ", sharingTracks=" + sharingTracks +
-                ", gradeCrossing=" + gradeCrossing +
-                ", trainFrequency='" + trainFrequency + '\'' +
+                ", distancebetweenstop='" + distancebetweenstop + '\'' +
+                ", maxspeed='" + maxspeed + '\'' +
+                ", sharingtracks=" + sharingtracks +
+                ", gradecrossing=" + gradecrossing +
+                ", trainfrequency='" + trainfrequency + '\'' +
                 ", amenities='" + amenities + '\'' +
                 '}';
     }

@@ -18,27 +18,10 @@ public class trainController {
 
     //endpoint to view all train
     @GetMapping("/trains")
-    public ResponseEntity viewAllTrain(){
-        try{
-            List<train> trains = new ArrayList<>();
-            trainRepository.findAll().forEach(trains::add); //no query needed krn pakai JPA
-
-            //untuk responsenya
-            Map<String, Object> response = new HashMap<>();
-            if(trains.isEmpty()){
-                //response no content ini ceknya di postman biar jelas ("204 No Content")
-                response.put("error", "train not found");
-                return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
-            }else{
-                //TODO: ubah ke JSON nya gmn
-                return new ResponseEntity<>(trains, HttpStatus.OK);
-            }
-        }catch (Exception e){
-            System.err.println(e.getMessage());
-            Map<String, Object> response = new HashMap<>();
-            response.put("error", "Internal server error");
-            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    public ResponseEntity<List<train>> viewAllTrain(){
+        List<train> trains = new ArrayList<>();
+        trainRepository.findAll().forEach(trains::add); //no query needed krn pakai JPA
+        return new ResponseEntity<>(trains, HttpStatus.OK);
     }
 
     //endpoint to view train detail by id
@@ -55,3 +38,30 @@ public class trainController {
         }
     }
 }
+
+/*
+* old code :
+*@GetMapping("/trains")
+    public ResponseEntity viewAllTrain(){
+        try{
+            List<train> trains = new ArrayList<>();
+            trainRepository.findAll().forEach(trains::add); //no query needed krn pakai JPA
+
+            //untuk responsenya
+            Map<String, Object> response = new HashMap<>();
+//            if(trains.isEmpty()){
+//                //response no content ini ceknya di postman biar jelas ("204 No Content")
+//                response.put("error", "train not found");
+//                return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
+//            }else{
+                return new ResponseEntity<>(trains, HttpStatus.OK);
+//            }
+        }catch (Exception e){
+            System.err.println(e.getMessage());
+            Map<String, Object> response = new HashMap<>();
+            response.put("error", "Internal server error");
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+*
+* */
