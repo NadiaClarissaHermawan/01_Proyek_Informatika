@@ -1,1 +1,0 @@
-folder model memuat class" entitas & tabel Database
