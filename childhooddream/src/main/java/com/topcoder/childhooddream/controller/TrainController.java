@@ -24,7 +24,7 @@ public class TrainController {
     }
 
     //endpoint to view train detail by id
-    @GetMapping("/trains/{id}")
+    @GetMapping("/trains/:{id}")
     public ResponseEntity viewTrainDetail(@PathVariable("id") Long id){
         Optional<Train> trainDetail = trainRepository.findById(id);
         Map<String, Object> response = new HashMap<>();

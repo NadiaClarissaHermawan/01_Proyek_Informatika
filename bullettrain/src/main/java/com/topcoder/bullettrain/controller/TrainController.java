@@ -10,32 +10,48 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api") //ketika akses semua endpoint harus diawali "/api"
+@RequestMapping("/api/trains")
 public class TrainController {
     @Autowired
     TrainRepository trainRepository;
 
-    //endpoint to view all train
-    @GetMapping("/trains")
-    public ResponseEntity viewAllTrain(){
-        List<Train> Trains = new ArrayList<>();
-        trainRepository.findAll().forEach(Trains::add); //no query needed krn pakai JPA
+    //1) search train that have same value
+    @GetMapping("/sharing-tracks")
+    public ResponseEntity<List<Train>> sameSharingTracks(){
+        List<Train> Trains = trainRepository.findBySharingtracks(true);
         return new ResponseEntity<>(Trains, HttpStatus.OK);
     }
 
-    //endpoint to view train detail by id
-    @GetMapping("/trains/{id}")
-    public ResponseEntity viewTrainDetail(@PathVariable("id") Long id){
-        Optional<Train> trainDetail = trainRepository.findById(id);
+    //2) Search trains which amenities values contains keyword
+    @GetMapping
+    public ResponseEntity<Object> sameSharingTracks(@RequestParam(value="amenities") String keywords){
+        Map<String, Object> response = new HashMap<>();
+        List<Train> trains = new ArrayList<>();
+        if(keywords.equals("")){
+            trainRepository.findAll().forEach(trains::add);
+        }else{
+            trainRepository.findByAmenities(keywords).forEach(trains::add);
+            if(trains.isEmpty()) {
+                response.put("message", "train not found");
+                return new ResponseEntity<>(response, HttpStatus.OK);
+            }
+        }
+        return new ResponseEntity<>(trains, HttpStatus.OK);
+    }
+
+    //3) Create new endpoint to delete a train
+    @GetMapping("/:{id}")
+    public ResponseEntity<Object> deleteTrain(@PathVariable("id") Long id){
+        Optional<Train> train = trainRepository.findById(id);
         Map<String, Object> response = new HashMap<>();
 
-        if(trainDetail.isPresent()){
-            return new ResponseEntity<>(trainDetail.get(), HttpStatus.OK);
+        if(train.isPresent()){
+            trainRepository.deleteById(id);
+            response.put("message", "train removed successfully");
+            return new ResponseEntity<>(response, HttpStatus.OK);
         }else{
             response.put("message", "train not found");
             return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
         }
     }
-    // override getErrorPath deprecated
-    // https://docs.spring.io/spring-boot/docs/2.3.8.RELEASE/api//org/springframework/boot/we
 }

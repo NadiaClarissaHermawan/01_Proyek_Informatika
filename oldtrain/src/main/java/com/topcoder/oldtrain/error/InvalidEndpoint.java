@@ -15,7 +15,7 @@ public class InvalidEndpoint implements ErrorController {
     @RequestMapping("/error")
     public ResponseEntity<ErrorJson> handleError(HttpServletRequest request) {
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
-
+        System.out.println("TEST");
         ErrorJson errorJson = new ErrorJson("invalid endpoint");
         if (status != null) {
             Integer statusCode = Integer.valueOf(status.toString());

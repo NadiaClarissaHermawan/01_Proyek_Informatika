@@ -7,35 +7,61 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.Column;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api") //ketika akses semua endpoint harus diawali "/api"
+@RequestMapping("/api/trains") //ketika akses semua endpoint harus diawali "/api"
 public class TrainController {
     @Autowired
     TrainRepository trainRepository;
 
-    //endpoint to view all train
-    @GetMapping("/trains")
-    public ResponseEntity viewAllTrain(){
-        List<Train> Trains = new ArrayList<>();
-        trainRepository.findAll().forEach(Trains::add); //no query needed krn pakai JPA
-        return new ResponseEntity<>(Trains, HttpStatus.OK);
-    }
-
-    //endpoint to view train detail by id
-    @GetMapping("/trains/{id}")
-    public ResponseEntity viewTrainDetail(@PathVariable("id") Long id){
-        Optional<Train> trainDetail = trainRepository.findById(id);
+    //1) Create new endpoint to edit existing train by id
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updateTrain(@PathVariable("id") Long id, @RequestBody Train train){
+        Optional<Train> trainData = trainRepository.findById(id);
         Map<String, Object> response = new HashMap<>();
+        boolean datatype = true;
 
-        if(trainDetail.isPresent()){
-            return new ResponseEntity<>(trainDetail.get(), HttpStatus.OK);
+        if(trainData.isPresent()){
+            Train updateTrain = trainData.get();
+
+            if(train.getName() != null) updateTrain.setName(train.getName());
+            if(train.getDescription() != null) updateTrain.setDescription(train.getDescription());
+            if(train.getDistancebetweenstop() != null) updateTrain.setDistancebetweenstop(train.getDistancebetweenstop());
+            if(train.getMaxspeed() != null ) updateTrain.setMaxspeed(train.getMaxspeed());
+            if(train.getTrainfrequency() != null) updateTrain.setTrainfrequency(train.getTrainfrequency());
+            if(train.getAmenities() != null) updateTrain.setAmenities(train.getAmenities());
+
+            if(train.getSharingtracks() != null && train.getSharingtracks().getClass().getSimpleName().equals("boolean")) updateTrain.setSharingtracks(train.getSharingtracks());
+            else if(train.getSharingtracks() != null && !train.getSharingtracks().getClass().getSimpleName().equals("boolean")) datatype = false;
+            if(train.getGradecrossing() != null && train.getGradecrossing().getClass().getSimpleName().equals("boolean")) updateTrain.setGradecrossing(train.getGradecrossing());
+            else if( train.getSharingtracks() != null && !train.getGradecrossing().getClass().getSimpleName().equals("boolean")) datatype = false;
+
+            if(datatype == true){
+                response.put("message", "train edited successfully");
+                return new ResponseEntity<>(response, HttpStatus.OK);
+            }else{
+                response.put("message", "failed when edit train");
+                return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+            }
         }else{
             response.put("message", "train not found");
             return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
         }
     }
-    // override getErrorPath deprecated
-    // https://docs.spring.io/spring-boot/docs/2.3.8.RELEASE/api//org/springframework/boot/we
+
+    //2)  Create new endpoint to create a new train
+    @PostMapping
+    public ResponseEntity<Object> createNewTrain(@RequestBody Train train){
+        Map<String, Object> response = new HashMap<>();
+        try {
+            Train newTrain = trainRepository.save(new Train(train.getId(), train.getName(), train.getDescription(), train.getDistancebetweenstop(), train.getMaxspeed(), train.getSharingtracks(), train.getGradecrossing(), train.getTrainfrequency(), train.getAmenities()));
+            response.put("message", "new train added successfully");
+            return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
+        } catch (Exception e){
+            response.put("message", "failed validation");
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        }
+    }
 }
