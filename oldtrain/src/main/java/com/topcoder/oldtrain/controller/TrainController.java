@@ -17,7 +17,7 @@ public class TrainController {
     TrainRepository trainRepository;
 
     //1) Create new endpoint to edit existing train by id
-    @PutMapping("/{id}")
+    @PutMapping("/:{id}")
     public ResponseEntity<Object> updateTrain(@PathVariable("id") Long id, @RequestBody Train train){
         Optional<Train> trainData = trainRepository.findById(id);
         Map<String, Object> response = new HashMap<>();
@@ -56,12 +56,36 @@ public class TrainController {
     public ResponseEntity<Object> createNewTrain(@RequestBody Train train){
         Map<String, Object> response = new HashMap<>();
         try {
-            Train newTrain = trainRepository.save(new Train(train.getId(), train.getName(), train.getDescription(), train.getDistancebetweenstop(), train.getMaxspeed(), train.getSharingtracks(), train.getGradecrossing(), train.getTrainfrequency(), train.getAmenities()));
-            response.put("message", "new train added successfully");
-            return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
+            boolean indicator = true;
+            if(train.getName() == null || train.getDescription() == null || train.getDistancebetweenstop() == null
+                || train.getMaxspeed() == null || train.getTrainfrequency() == null || train.getAmenities() == null)
+                indicator = false;
+
+            if(indicator){
+                Train newTrain = trainRepository.save(new Train(train.getId(), train.getName(), train.getDescription(), train.getDistancebetweenstop(), train.getMaxspeed(), train.getSharingtracks(), train.getGradecrossing(), train.getTrainfrequency(), train.getAmenities()));
+                response.put("message", "new train added successfully");
+                return new ResponseEntity<>(response, HttpStatus.CREATED);
+            }else{
+                response.put("message", "failed validation");
+                return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+            }
         } catch (Exception e){
             response.put("message", "failed validation");
             return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
         }
     }
 }
+
+/*test case 2
+ {
+    "id": 14,
+    "name": "Eurostar e320",
+    "description": "kuda tercepat sepanjang masa",
+    "amenities": "none",
+    "distancebetweenstop": "at least 200 miles",
+    "maxspeed": "200 mph",
+    "sharingtracks": false,
+    "gradecrossing": false,
+    "trainfrequency": "12 hours"
+}
+* */
