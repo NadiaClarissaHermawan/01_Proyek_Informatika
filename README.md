@@ -1,27 +1,31 @@
-# 01_Proyek_Informatika
+# 01_Proyek_Informatika <!--pakai 1x## karena judul -->
 
-#Anggota Kelompok B :
-<pre>
-- Nadia Clarissa H    6181901013
-- Reynaldi Lukas Y    6181901038
-- Thomas Christian H  7316027
-</pre>
+## Anggota Kelompok B :  
+- @NadiaClarissaHermawan        6181901013
+- @ReynaldiLukasYudawinata      6181901038
+- @ThomasChristianHaerynoo      2016730027
 
-# Project Details :
-<pre>
-- Topic 1 - Old Train (easy) - https://www.topcoder.com/challenges/4dd97775-493e-4bb5-b5e3-cd16aa5ab689
-- Membuat Rest-API 
-</pre>
 
-# How to Run :
-<pre>
+## Project Details :
+- Membuat Rest-API
+- Childhood Dream (easy) -  http://www.topcoder.com/challenges/30168991
+- Bullet Train (medium) - http://www.topcoder.com/challenges/30168980 
+- Old Train (hard) - http://www.topcoder.com/challenges/30168986
+
+
+## Software & Environment Requirement :
+- JDK 8
+- PostgreSQL
+- Maven
+
+
+## How to activate API :
 1) Open the project directory in cmd
 2) type mvn spring-boot:run 
 3) enter & wait 
-</pre>
 
-# How to Kill Task :
-<pre>
+
+## How to Kill Task :
 1) Open cmd, type : netstat -ano | findstr 8080
 2) type : taskkill /F /PID "task_id"
-</pre>
+
