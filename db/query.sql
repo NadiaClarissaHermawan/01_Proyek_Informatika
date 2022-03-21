@@ -1,14 +1,16 @@
---Semua command ini akan diketikkan pada postgre sql command prompt
+--Open PSQL, then copy-paste these command 
 
--- membuat database dengan nama trainAPI
+-- make a new database named trainAPI
 CREATE DATABASE trainapi;
 
--- menghubungkan ke database trainAPI
+-- connect to trainAPI database
 \c trainapi
 
--- membuat tabel trains dengan berbagai atributnya
-CREATE TABLE Trains(
-	id int,
+CREATE SEQUENCE trains_id_seq INCREMENT 1 START 6;
+
+-- make a new table named trains with it's attributes
+CREATE TABLE trains(
+	id int NOT NULL DEFAULT nextval('trains_id_seq'),
 	name VARCHAR(500),
 	description VARCHAR(1000),
 	"distance-between-stop" VARCHAR(500),
@@ -19,10 +21,14 @@ CREATE TABLE Trains(
 	amenities VARCHAR(500)
 );
 
--- menjadikan atribut id sebagai primary key
-ALTER TABLE trains ADD CONSTRAINT id PRIMARY KEY (id);
+ALTER SEQUENCE trains_id_seq
+OWNED BY trains.id;
 
--- menambahkan 5 buah data trains
+-- promote id attribute into a primary key
+ALTER TABLE trains ADD CONSTRAINT id PRIMARY KEY (id);
+-- ALTER TABLE trains ALTER COLUMN id DROP DEFAULT;
+
+-- add 5 data samples
 INSERT INTO trains VALUES (1,'Light rail','Light rail, which might be also known as trolley and streetcars, mean trains that function as local transit in an urban-core and can operate on the street-level. Compared to rapid transit, light rail costs less, is more pedestrian friendly, but has less passenger capacity. The major advantage with light rail is that it can operate like rapid transit or like local buses, depending on the available infrastructure','a few blocks to 1 or 2 miles','55-65 mph','true','false', '3-30 minutes','n/a');
 
 INSERT INTO trains VALUES (2,'Rapid transit','Rapid transit, which is also known as metro, subway, and heavy rail, mean trains that generally serve the urban-core, have large passenger capacity, and operate totally separate from road traffic. In order to run separately from road traffic in the city-core, rapid transit trains would run either above or underground.','1/2 mile to 2 or 3 miles','65-70 mph','false','false', '3-20 minutes','Large space for standees');

@@ -33,6 +33,8 @@ public class TrainController {
                 response.put("message", "train not found");
                 return new ResponseEntity<>(response, HttpStatus.OK);
             }
+        }else{
+            trainRepository.findAll().forEach(trains::add);
         }
         return new ResponseEntity<>(trains, HttpStatus.OK);
     }

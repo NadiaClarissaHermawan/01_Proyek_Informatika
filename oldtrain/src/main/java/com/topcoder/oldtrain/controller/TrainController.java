@@ -84,11 +84,11 @@ public class TrainController {
             }
 
             if(datatype == true){
+                trainRepository.save(updateTrain);
                 response.put("message", "train edited successfully");
                 return new ResponseEntity<>(response, HttpStatus.OK);
             }else{
                 response.put("message", "failed when edit train");
-
                 return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
             }
         }else{
@@ -108,23 +108,16 @@ public class TrainController {
                 indicator = false;
 
             if(indicator){
-                Train newTrain = trainRepository.save(new Train(train.getId(), train.getName(), train.getDescription(), train.getDistancebetweenstop(), train.getMaxspeed(), train.getSharingtracks(), train.getGradecrossing(), train.getTrainfrequency(), train.getAmenities()));
+                Train newTrain = trainRepository.save(new Train(trainRepository.count()+1, train.getName(), train.getDescription(), train.getDistancebetweenstop(), train.getMaxspeed(), train.getSharingtracks(), train.getGradecrossing(), train.getTrainfrequency(), train.getAmenities()));
                 response.put("message", "new train added successfully");
                 return new ResponseEntity<>(response, HttpStatus.CREATED);
             }else{
-                response.put("message", "failed validationyes");
+                response.put("message", "failed validation");
                 return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
             }
         } catch (Exception e){
             response.put("message", "failed validation");
             return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
         }
-    }
-
-    @GetMapping("/all")
-    public ResponseEntity viewAllTrain(){
-        List<Train> Trains = new ArrayList<>();
-        trainRepository.findAll().forEach(Trains::add); //no query needed krn pakai JPA
-        return new ResponseEntity<>(Trains, HttpStatus.OK);
     }
 }

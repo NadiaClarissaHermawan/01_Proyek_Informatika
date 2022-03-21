@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 public class InvalidEndpoint implements ErrorController {
     @RequestMapping("/error")
     public ResponseEntity<ErrorJson> handleError(HttpServletRequest request) {
-        ErrorJson errorJson = new ErrorJson("failed when edit trainx");
+        ErrorJson errorJson = new ErrorJson("failed when edit train");
 
         return new ResponseEntity<>(errorJson, HttpStatus.BAD_REQUEST);
     }

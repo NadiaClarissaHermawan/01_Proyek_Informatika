@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Table(name="trains")
 public class Train {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) //GenerationType.AUTO = auto increment.
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "name")
     private String name;
