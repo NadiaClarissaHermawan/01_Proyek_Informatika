@@ -54,7 +54,6 @@ For example:
    - Method: GET
    - Url: /api/trains/
    - Response: 
-   
     - Success:
      - Returns 200 code and
      - Returns all trains with all keys and values
