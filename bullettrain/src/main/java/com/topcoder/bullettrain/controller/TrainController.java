@@ -27,11 +27,9 @@ public class TrainController {
     public ResponseEntity<Object> sameSharingTracks(@RequestParam(value="amenities") String keywords){
         Map<String, Object> response = new HashMap<>();
         List<Train> trains = new ArrayList<>();
-        if(keywords.equals("")){
-            trainRepository.findAll().forEach(trains::add);
-        }else{
-            trainRepository.findByAmenities(keywords).forEach(trains::add);
-            if(trains.isEmpty()) {
+        if(!keywords.equals("")){
+            trainRepository.findByAmenitiesContainingIgnoreCase(keywords).forEach(trains::add);
+            if(trains.isEmpty()){
                 response.put("message", "train not found");
                 return new ResponseEntity<>(response, HttpStatus.OK);
             }
@@ -40,7 +38,7 @@ public class TrainController {
     }
 
     //3) Create new endpoint to delete a train
-    @GetMapping("/:{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteTrain(@PathVariable("id") Long id){
         Optional<Train> train = trainRepository.findById(id);
         Map<String, Object> response = new HashMap<>();

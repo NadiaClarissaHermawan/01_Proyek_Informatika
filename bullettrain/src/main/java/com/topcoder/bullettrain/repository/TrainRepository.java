@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface TrainRepository extends JpaRepository<Train, Long> {
-    List<Train> findByAmenities(String keyword);
+    List<Train> findByAmenitiesContainingIgnoreCase(String keyword);
     List<Train> findBySharingtracks(boolean id);
 }

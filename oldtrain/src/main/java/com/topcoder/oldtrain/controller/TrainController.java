@@ -17,7 +17,7 @@ public class TrainController {
     TrainRepository trainRepository;
 
     //1) Create new endpoint to edit existing train by id
-    @PutMapping("/:{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Object> updateTrain(@PathVariable("id") Long id, @RequestBody Train train){
         Optional<Train> trainData = trainRepository.findById(id);
         Map<String, Object> response = new HashMap<>();
@@ -26,23 +26,69 @@ public class TrainController {
         if(trainData.isPresent()){
             Train updateTrain = trainData.get();
 
-            if(train.getName() != null) updateTrain.setName(train.getName());
-            if(train.getDescription() != null) updateTrain.setDescription(train.getDescription());
-            if(train.getDistancebetweenstop() != null) updateTrain.setDistancebetweenstop(train.getDistancebetweenstop());
-            if(train.getMaxspeed() != null ) updateTrain.setMaxspeed(train.getMaxspeed());
-            if(train.getTrainfrequency() != null) updateTrain.setTrainfrequency(train.getTrainfrequency());
-            if(train.getAmenities() != null) updateTrain.setAmenities(train.getAmenities());
+            if(train.getName() != null){
+                if (train.getName().getClass().getSimpleName().equalsIgnoreCase("String")) {
+                    updateTrain.setName(train.getName());
+                }else if (!train.getName().getClass().getSimpleName().equalsIgnoreCase("String")) {
+                    datatype = false;
+                }
+            }
 
-            if(train.getSharingtracks() != null && train.getSharingtracks().getClass().getSimpleName().equals("boolean")) updateTrain.setSharingtracks(train.getSharingtracks());
-            else if(train.getSharingtracks() != null && !train.getSharingtracks().getClass().getSimpleName().equals("boolean")) datatype = false;
-            if(train.getGradecrossing() != null && train.getGradecrossing().getClass().getSimpleName().equals("boolean")) updateTrain.setGradecrossing(train.getGradecrossing());
-            else if( train.getSharingtracks() != null && !train.getGradecrossing().getClass().getSimpleName().equals("boolean")) datatype = false;
+            if(train.getDescription() != null){
+                if (train.getDescription().getClass().getSimpleName().equalsIgnoreCase("String"))
+                    updateTrain.setDescription(train.getDescription());
+                else if (!train.getDescription().getClass().getSimpleName().equalsIgnoreCase("String"))
+                    datatype = false;
+            }
+
+            if(train.getDistancebetweenstop() != null){
+                if (train.getDistancebetweenstop().getClass().getSimpleName().equalsIgnoreCase("String"))
+                    updateTrain.setDistancebetweenstop(train.getDistancebetweenstop());
+                else if (!train.getDistancebetweenstop().getClass().getSimpleName().equalsIgnoreCase("String"))
+                    datatype = false;
+            }
+
+            if(train.getMaxspeed() != null){
+                if (train.getMaxspeed().getClass().getSimpleName().equalsIgnoreCase("String"))
+                    updateTrain.setMaxspeed(train.getMaxspeed());
+                else if (!train.getMaxspeed().getClass().getSimpleName().equalsIgnoreCase("String"))
+                    datatype = false;
+            }
+
+            if(train.getTrainfrequency() != null){
+                if (train.getTrainfrequency().getClass().getSimpleName().equalsIgnoreCase("String"))
+                    updateTrain.setTrainfrequency(train.getTrainfrequency());
+                else if (!train.getTrainfrequency().getClass().getSimpleName().equalsIgnoreCase("String"))
+                    datatype = false;
+            }
+
+            if(train.getAmenities() != null){
+                if (train.getAmenities().getClass().getSimpleName().equalsIgnoreCase("String"))
+                    updateTrain.setAmenities(train.getAmenities());
+                else if (!train.getAmenities().getClass().getSimpleName().equalsIgnoreCase("String"))
+                    datatype = false;
+            }
+
+            if(train.getSharingtracks() != null) {
+                if (train.getSharingtracks().getClass().getSimpleName().equalsIgnoreCase("boolean"))
+                    updateTrain.setSharingtracks(train.getSharingtracks());
+                else if (!train.getSharingtracks().getClass().getSimpleName().equalsIgnoreCase("boolean"))
+                    datatype = false;
+            }
+
+            if(train.getGradecrossing() != null){
+                if(train.getGradecrossing().getClass().getSimpleName().equalsIgnoreCase("boolean"))
+                    updateTrain.setGradecrossing(train.getGradecrossing());
+                else if(!train.getGradecrossing().getClass().getSimpleName().equalsIgnoreCase("boolean"))
+                    datatype = false;
+            }
 
             if(datatype == true){
                 response.put("message", "train edited successfully");
                 return new ResponseEntity<>(response, HttpStatus.OK);
             }else{
                 response.put("message", "failed when edit train");
+
                 return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
             }
         }else{
@@ -58,7 +104,7 @@ public class TrainController {
         try {
             boolean indicator = true;
             if(train.getName() == null || train.getDescription() == null || train.getDistancebetweenstop() == null
-                || train.getMaxspeed() == null || train.getTrainfrequency() == null || train.getAmenities() == null)
+                || train.getMaxspeed() == null || train.getTrainfrequency() == null || train.getAmenities() == null || train.getGradecrossing() == null)
                 indicator = false;
 
             if(indicator){
@@ -66,7 +112,7 @@ public class TrainController {
                 response.put("message", "new train added successfully");
                 return new ResponseEntity<>(response, HttpStatus.CREATED);
             }else{
-                response.put("message", "failed validation");
+                response.put("message", "failed validationyes");
                 return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
             }
         } catch (Exception e){
@@ -74,18 +120,11 @@ public class TrainController {
             return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
         }
     }
-}
 
-/*test case 2
- {
-    "id": 14,
-    "name": "Eurostar e320",
-    "description": "kuda tercepat sepanjang masa",
-    "amenities": "none",
-    "distancebetweenstop": "at least 200 miles",
-    "maxspeed": "200 mph",
-    "sharingtracks": false,
-    "gradecrossing": false,
-    "trainfrequency": "12 hours"
+    @GetMapping("/all")
+    public ResponseEntity viewAllTrain(){
+        List<Train> Trains = new ArrayList<>();
+        trainRepository.findAll().forEach(Trains::add); //no query needed krn pakai JPA
+        return new ResponseEntity<>(Trains, HttpStatus.OK);
+    }
 }
-* */

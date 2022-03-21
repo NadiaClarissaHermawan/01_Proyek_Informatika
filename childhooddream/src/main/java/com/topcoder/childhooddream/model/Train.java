@@ -17,15 +17,15 @@ public class Train {
     private String name;
     @Column(name = "description")
     private String description;
-    @Column(name = "distancebetweenstop")
+    @Column(name = "[distance-between-stop]")
     private String distancebetweenstop;
-    @Column(name = "maxspeed")
+    @Column(name = "[max-speed]")
     private String maxspeed;
-    @Column(name = "sharingtracks")
+    @Column(name = "[sharing-tracks]")
     private Boolean sharingtracks;
-    @Column(name = "gradecrossing")
+    @Column(name = "[grade-crossing]")
     private Boolean gradecrossing;
-    @Column(name = "trainfrequency")
+    @Column(name = "[train-frequency]")
     private String trainfrequency;
     @Column(name = "amenities")
     private String amenities;
