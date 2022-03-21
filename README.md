@@ -31,9 +31,9 @@ The reference that is being used to work on this project comes from this [link](
 2. Open [db/query.sql](https://github.com/NadiaClarissaHermawan/01_Proyek_Informatika/blob/master/db/query.sql) in the db folder. Copy and paste all the commands there into psql. 
 3. Customize the datasource.url, datasource.username, and datasource.password value in the application.properties according to your own database.
 These are the directories of the application.properties for each difficulty levels:
- - Childhood dream (easy): [childhooddream/src/main/resources/application.properties](https://github.com/NadiaClarissaHermawan/01_Proyek_Informatika/blob/master/childhooddream/src/main/resources/application.properties)
-  - Bullet train (medium): [bullettrain/src/main/resources/application.properties](https://github.com/NadiaClarissaHermawan/01_Proyek_Informatika/blob/master/bullettrain/src/main/resources/application.properties)
-  - Old train (hard): [oldtrain/src/main/resources/application.properties](https://github.com/NadiaClarissaHermawan/01_Proyek_Informatika/blob/master/oldtrain/src/main/resources/application.properties)
+  - Childhood dream (easy): [childhooddream/src/main/resources/application.properties](https://github.com/NadiaClarissaHermawan/01_Proyek_Informatika/blob/master/childhooddream/src/main/resources/application.properties)
+   - Bullet train (medium): [bullettrain/src/main/resources/application.properties](https://github.com/NadiaClarissaHermawan/01_Proyek_Informatika/blob/master/bullettrain/src/main/resources/application.properties)
+   - Old train (hard): [oldtrain/src/main/resources/application.properties](https://github.com/NadiaClarissaHermawan/01_Proyek_Informatika/blob/master/oldtrain/src/main/resources/application.properties)
 
 ### 2. How To Activate the API :
 
