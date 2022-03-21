@@ -8,15 +8,17 @@
 
 
 ## Project Details :
+Ini adalah proyek pembuatan Spring-boot REST API untuk sebuah aplikasi manajemen kereta api yang didefinisikan pada salah satu *challenge* dari website [Topcoder](https://www.topcoder.com/challenges/a840efcb-eaf4-435f-92d8-0fbde7dfa018)
 
-- Membuat Rest-API
+Dalam page [Topcoder](https://www.topcoder.com/challenges/a840efcb-eaf4-435f-92d8-0fbde7dfa018), ada 3 tingkat kesulitan *challenge*, yaitu : 
+
 - Childhood Dream (easy) -  http://www.topcoder.com/challenges/30168991
 - Bullet Train (medium) - http://www.topcoder.com/challenges/30168980 
 - Old Train (hard) - http://www.topcoder.com/challenges/30168986
 
+Referensi pembelajaran yang dipakai untuk membuat proyek ini adalah dari link https://www.bezkoder.com/spring-boot-postgresql-example/
 
 ## Software & Environment Requirement :
-
 - JDK 
 - PostgreSQL
 - Maven
