@@ -52,103 +52,110 @@ For example:
 <!--refer balik ke section difficulty-->
  ### Childhood Dream (easy difficulty)
  1. Endpoint to view all trains 
-   - Method: GET
-   - Url: /api/trains/
-   - Response: 
-    - Success:
-     - Returns 200 code and
-     - Returns all trains with all keys and values
-    - Error:
-     - Returns 405 code with "invalid endpoint" message
+ - Method: GET
+ - Url: /api/trains/
+ - Response: 
+  - Success:
+   - Returns 200 code and
+   - Returns all trains with all keys and values
+  - Error:
+   - Returns 405 code with "invalid endpoint" message
  2. Endpoint to view train detail by id
-  - Method : GET
-  - Url : /api/trains/:id
-  - Response:
-   - Success:
-    - Returns 200 code and
-    - Returns the details of selected train by id
+ - Method : GET
+ - Url : /api/trains/:id
+ - Response:
+  - Success:
+   - Returns 200 code and
+   - Returns the details of selected train by id
   - Error: 
    - When the train searched by id don't exist:
-    - Returns 404 code and "train not found" message
+   - Returns 404 code and "train not found" message
  ### Bullet Train (medium difficulty)
  1. Endpoint to view all trains 
-  - Method: GET
-   - Url: /api/trains/sharing-tracks
-   - Response: 
-    - Success:
-     - Returns 200 code and
-     - Returns list of all train with their sharing-tracks value being true
-    - Error:
-     - When search with incorrect route for example:  /api/trains/distance-between-stop
-      - Returns 405 code and "invalid endpoint" message
+ - Method: GET
+ - Url: /api/trains/sharing-tracks
+ - Response: 
+  - Success:
+   - Returns 200 code and
+   - Returns list of all train with their sharing-tracks value being true
+  - Error:
+   - When search with incorrect route for example:  /api/trains/distance-between-stop
+   - Returns 405 code and "invalid endpoint" message
  2. Endpoint to view all trains 
-  - Method: GET
-   - Url: /api/trains?amenities=\[keyword\]
-   - Response: 
-    - Success:
-     - Returns 200 code and
-     - Returns list of all train that contains the keyword in their amenities attribute 
-    - Error:
-     - When use other parameters than the amenities
-      - Returns 405 code and "invalid endpoint" message
-     - When search result empty
-      - Returns 200 code and "train not found" message
+ - Method: GET
+ - Url: /api/trains?amenities=\[keyword\]
+ - Response: 
+  - Success:
+   - Returns 200 code and
+   - Returns list of all train that contains the keyword in their amenities attribute 
+  - Error:
+   - When use other parameters than the amenities
+    - Returns 405 code and "invalid endpoint" message
+   - When search result empty
+    - Returns 200 code and "train not found" message
 3. Endpoint to delete a train
-- Method: DELETE
-   - Url: /api/trains/:id
-   - Response: 
-    - Success:
-     - Returns 200 code and "train removed successfully" message
-    - Error:
-     - If searched train don't exist:
-      - Returns 404 code and "train not found" message
+ - Method: DELETE
+ - Url: /api/trains/:id
+ - Response: 
+  - Success:
+   - Returns 200 code and "train removed successfully" message
+  - Error:
+   - If searched train don't exist:
+    - Returns 404 code and "train not found" message
 ### Old Train (hard difficulty)
 1. Endpoint to edit existing train by id
-- Method: PUT
-   - Url: /api/trains/:id
-   - Body request needed:
-    - name: String
-    - description: String
-    - distancebetween-stop: String
-    - maxspeed: String
-    - sharingtracks: Boolean
-    - gradecrossing: Boolean
-    - trainfrequency: String
-    - amenities: String
-   - Response: 
-    - Success:
-     - Returns 200 code and "train edited successfully" message
-    - Error:
-     - If searched train don't exist:
-      - Returns 404 code and "train not found" message
-     - When filled with different data types for example: id, sharing-tracks or grade-crossing with other values than boolean:
-      - Returns 404 code and "failed when edit train" message
+ - Method: PUT
+ - Url: /api/trains/:id
+ - Body request needed:
+  - name: String
+  - description: String
+  - distance-between-stop: String
+  - max-speed: String
+  - sharing-tracks: Boolean
+  - grade-crossing: Boolean
+  - train-frequency: String
+  - amenities: String
+ - Response: 
+  - Success:
+   - Returns 200 code and "train edited successfully" message
+  - Error:
+   - If searched train don't exist:
+    - Returns 404 code and "train not found" message
+   - When filled with different data types for example: id, sharing-tracks or grade-crossing with other values than boolean:
+    - Returns 404 code and "failed when edit train" message
 2. Endpoint to create a new train
-- Method: POST
+ - Method: POST
  - Url: /api/trains/
- - Sample data to add a new train:
-    - "id": 6,
-    - "name": "Eurostar e320",
-    - "description": "Eurostar e320 was created as a single and unified corporate entity owned by SNCF, SNCB and LCR in September 2010. In December, a £700m (approximately $1,076bn) investment to add ten new e320 trains to its fleet and carry out a complete upgrade of its existing 28 trains. It is capable of carrying more than 900 passengers as a result of the 20% capacity boost given to it, compared to the existing 28 Eurostar trains which carry 750 passengers. The entire propulsion system and technical modules are distributed under the floor over the entire length of the train, providing more space for passengers. The train’s roof is equipped with eight pantographs for dealing with Europe’s different power systems and contact line types.",
-    - "amenities": "Restroom, business class, cafe car, Wi-Fi, Onboard flat-screens. Reclining seats, flexible reading lamp, a sliding dining table and more luggage areas. Four spaces are provided for wheelchair passengers.",
-    - "distance-between-stop": "at least 200 miles",
-    - "max-speed": "200 mph",
-    - "sharing-tracks": false,
-    - "grade-crossing": false,
-    - "train-frequency": "12 hours"
-   - **Important**: Please assume all keys and values are required for POST method and must use the correct data type.
-   - Response: 
-    - Success:
-     - Returns 201 code and "new train added successfully" message
-    - Error:
-     - When add fields and values that not exists, for example:
-      - "id": 11,
-      - "name-new": "name ODD",
-      - "description-new": "description ODD",
-       - returns 400 code and "failed validation" message
-Example:
+ - Sample body request data to add a new train:
+<pre>
+    {
+    "id": 6,
+    "name": "Eurostar e320",
+    "description": "Eurostar e320 was created as a single and unified corporate entity owned by SNCF, SNCB and LCR in September 2010. In December, a £700m (approximately $1,076bn) investment to add ten new e320 trains to its fleet and carry out a complete upgrade of its existing 28 trains. It is capable of carrying more than 900 passengers as a result of the 20% capacity boost given to it, compared to the existing 28 Eurostar trains which carry 750 passengers. The entire propulsion system and technical modules are distributed under the floor over the entire length of the train, providing more space for passengers. The train’s roof is equipped with eight pantographs for dealing with Europe’s different power systems and contact line types.",
+    "amenities": "Restroom, business class, cafe car, Wi-Fi, Onboard flat-screens. Reclining seats, flexible reading lamp, a sliding dining table and more luggage areas. Four spaces are provided for wheelchair passengers.",
+    "distance-between-stop": "at least 200 miles",
+    "max-speed": "200 mph",
+    "sharing-tracks": false,
+    "grade-crossing": false,
+    "train-frequency": "12 hours"
+    }
+</pre>
+ - **Important**: Please assume all keys and values are required for POST method and must use the correct data type.
+ - Response: 
+  - Success:
+   - Returns 201 code and "new train added successfully" message
+  - Error:
+   - When add fields and values that not exists, for example:
+    <pre>
+     "id": 11,
+     "name-new": "name ODD",
+     "description-new": "description ODD",
+     returns 400 code and "failed validation" message
+    </pre>
+ - Example:
+
 ![Example of endpoint url](images/localhost_url_example.PNG)
-  <!--kasih contoh screenshot-->
+  
 ## How to Kill Task :
 
 ### Method 1
@@ -156,4 +163,5 @@ Example:
 2. type : taskkill /F /PID "task_id"
 
 ### Method 2
-1. Open cmd, type: ctrl+c
+1. Open cmd, type: ctrl+c, then press enter
+2. when prompted, type y, then press enter
