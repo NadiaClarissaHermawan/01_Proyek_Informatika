@@ -61,73 +61,73 @@ For example:
       - Error:
         - Returns 405 code with "invalid endpoint" message
  2. Endpoint to view train detail by id
- - Method : GET
- - Url : /api/trains/:id
- - Response:
-  - Success:
-   - Returns 200 code and
-   - Returns the details of selected train by id
-  - Error: 
-   - When the train searched by id don't exist:
-   - Returns 404 code and "train not found" message
+    - Method : GET
+    - Url : /api/trains/:id
+    - Response:
+      - Success:
+        - Returns 200 code and
+        - Returns the details of selected train by id
+      - Error: 
+        - When the train searched by id don't exist:
+          - Returns 404 code and "train not found" message
  ### Bullet Train (medium difficulty)
  1. Endpoint to view all trains 
- - Method: GET
- - Url: /api/trains/sharing-tracks
- - Response: 
-  - Success:
-   - Returns 200 code and
-   - Returns list of all train with their sharing-tracks value being true
-  - Error:
-   - When search with incorrect route for example:  /api/trains/distance-between-stop
-   - Returns 405 code and "invalid endpoint" message
+    - Method: GET
+    - Url: /api/trains/sharing-tracks
+    - Response: 
+      - Success:
+        - Returns 200 code and
+        - Returns list of all train with their sharing-tracks value being true
+      - Error:
+        - When search with incorrect route for example:  /api/trains/distance-between-stop
+          - Returns 405 code and "invalid endpoint" message
  2. Endpoint to view all trains 
- - Method: GET
- - Url: /api/trains?amenities=\[keyword\]
- - Response: 
-  - Success:
-   - Returns 200 code and
-   - Returns list of all train that contains the keyword in their amenities attribute 
-  - Error:
-   - When use other parameters than the amenities
-    - Returns 405 code and "invalid endpoint" message
-   - When search result empty
-    - Returns 200 code and "train not found" message
+    - Method: GET
+    - Url: /api/trains?amenities=\[keyword\]
+    - Response: 
+      - Success:
+        - Returns 200 code and
+        - Returns list of all train that contains the keyword in their amenities attribute 
+      - Error:
+        - When use other parameters than the amenities
+          - Returns 405 code and "invalid endpoint" message
+        - When search result empty
+          - Returns 200 code and "train not found" message
 3. Endpoint to delete a train
- - Method: DELETE
- - Url: /api/trains/:id
- - Response: 
-  - Success:
-   - Returns 200 code and "train removed successfully" message
-  - Error:
-   - If searched train don't exist:
-    - Returns 404 code and "train not found" message
+   - Method: DELETE
+   - Url: /api/trains/:id
+   - Response: 
+     - Success:
+       - Returns 200 code and "train removed successfully" message
+     - Error:
+       - If searched train don't exist:
+         - Returns 404 code and "train not found" message
 ### Old Train (hard difficulty)
 1. Endpoint to edit existing train by id
- - Method: PUT
- - Url: /api/trains/:id
- - Body request needed:
-  - name: String
-  - description: String
-  - distance-between-stop: String
-  - max-speed: String
-  - sharing-tracks: Boolean
-  - grade-crossing: Boolean
-  - train-frequency: String
-  - amenities: String
- - Response: 
-  - Success:
-   - Returns 200 code and "train edited successfully" message
-  - Error:
-   - If searched train don't exist:
-    - Returns 404 code and "train not found" message
-   - When filled with different data types for example: id, sharing-tracks or grade-crossing with other values than boolean:
-    - Returns 404 code and "failed when edit train" message
+   - Method: PUT
+   - Url: /api/trains/:id
+   - Body request needed:
+     - name: String
+     - description: String
+     - distance-between-stop: String
+     - max-speed: String
+     - sharing-tracks: Boolean
+     - grade-crossing: Boolean
+     - train-frequency: String
+     - amenities: String
+   - Response: 
+     - Success:
+       - Returns 200 code and "train edited successfully" message
+     - Error:
+       - If searched train don't exist:
+         - Returns 404 code and "train not found" message
+       - When filled with different data types for example: id, sharing-tracks or grade-crossing with other values than boolean:
+         - Returns 404 code and "failed when edit train" message
 2. Endpoint to create a new train
- - Method: POST
- - Url: /api/trains/
- - Sample body request data to add a new train:
-<pre>
+   - Method: POST
+   - Url: /api/trains/
+   - Sample body request data to add a new train:
+   <pre>
     {
     "id": 6,
     "name": "Eurostar e320",
@@ -139,20 +139,20 @@ For example:
     "grade-crossing": false,
     "train-frequency": "12 hours"
     }
-</pre>
- - **Important**: Please assume all keys and values are required for POST method and must use the correct data type.
- - Response: 
-  - Success:
-   - Returns 201 code and "new train added successfully" message
-  - Error:
-   - When add fields and values that not exists, for example:
-    <pre>
-     "id": 11,
-     "name-new": "name ODD",
-     "description-new": "description ODD",
-     returns 400 code and "failed validation" message
-    </pre>
- - Example:
+   </pre>
+   - **Important**: Please assume all keys and values are required for POST method and must use the correct data type.
+   - Response: 
+     - Success:
+       - Returns 201 code and "new train added successfully" message
+     - Error:
+       - When add fields and values that not exists, for example:
+        <pre>
+        "id": 11,
+        "name-new": "name ODD",
+        "description-new": "description ODD",
+        returns 400 code and "failed validation" message
+        </pre>
+   - Example:
 
 ![Example of endpoint url](images/localhost_url_example.PNG)
   
