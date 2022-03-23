@@ -45,8 +45,9 @@ These are the directories of the application.properties for each difficulty leve
 
 1. Once you've run the spring-boot, check the port where your TomcatWebServer started
 For example: 
-<!--masukin foto disini-->
+
 ![Example of TomcatWebServer port number](images/tomcat_port_example.jpg)
+
 2. You can then use the endpoints from this API according to the endpoints explained in the Topcoder challenge respective to their difficulty levels.
 <!--refer balik ke section difficulty-->
  ### Childhood Dream (easy difficulty)
