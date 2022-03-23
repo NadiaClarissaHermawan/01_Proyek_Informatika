@@ -2,7 +2,7 @@
 
 ## Anggota Kelompok B :
 
-- @Nadia Clarissa Hermawan        6181901013
+- Nadia Clarissa Hermawan        6181901013
 - Reynaldi Lukas Yudawinata      6181901038
 - Thomas Christsian Haeryono     2016730027
 
