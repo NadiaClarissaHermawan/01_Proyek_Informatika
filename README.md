@@ -42,6 +42,7 @@ These are the directories of the application.properties for each difficulty leve
 3. Enter & wait 
 
 ## How to use the API:
+
 1. Once you've run the spring-boot, check the port where your TomcatWebServer started
 For example: 
 <!--masukin foto disini-->
@@ -49,7 +50,7 @@ For example:
 2. You can then use the endpoints from this API according to the endpoints explained in the Topcoder challenge respective to their difficulty levels.
 <!--refer balik ke section difficulty-->
  ### Childhood Dream (easy difficulty)
-  1. Endpoint to view all trains 
+ 1. Endpoint to view all trains 
    - Method: GET
    - Url: /api/trains/
    - Response: 
@@ -123,8 +124,8 @@ For example:
       - Returns 404 code and "failed when edit train" message
 2. Endpoint to create a new train
 - Method: POST
-   - Url: /api/trains/
-   - Sample data to add a new train:
+ - Url: /api/trains/
+ - Sample data to add a new train:
     - "id": 6,
     - "name": "Eurostar e320",
     - "description": "Eurostar e320 was created as a single and unified corporate entity owned by SNCF, SNCB and LCR in September 2010. In December, a £700m (approximately $1,076bn) investment to add ten new e320 trains to its fleet and carry out a complete upgrade of its existing 28 trains. It is capable of carrying more than 900 passengers as a result of the 20% capacity boost given to it, compared to the existing 28 Eurostar trains which carry 750 passengers. The entire propulsion system and technical modules are distributed under the floor over the entire length of the train, providing more space for passengers. The train’s roof is equipped with eight pantographs for dealing with Europe’s different power systems and contact line types.",
