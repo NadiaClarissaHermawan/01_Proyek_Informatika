@@ -52,14 +52,14 @@ For example:
 <!--refer balik ke section difficulty-->
  ### Childhood Dream (easy difficulty)
  1. Endpoint to view all trains 
- - Method: GET
- - Url: /api/trains/
- - Response: 
-  - Success:
-   - Returns 200 code and
-   - Returns all trains with all keys and values
-  - Error:
-   - Returns 405 code with "invalid endpoint" message
+    - Method: GET
+    - Url: /api/trains/
+    - Response: 
+      - Success:
+        - Returns 200 code and
+        - Returns all trains with all keys and values
+      - Error:
+        - Returns 405 code with "invalid endpoint" message
  2. Endpoint to view train detail by id
  - Method : GET
  - Url : /api/trains/:id
