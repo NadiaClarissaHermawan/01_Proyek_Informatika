@@ -1,7 +1,3 @@
-childhooddream\src\main\resources\application.properties
-bullettrain\src\main\resources\application.properties
-oldtrain\src\main\resources\application.properties
-
 /target/
 !.mvn/wrapper/maven-wrapper.jar
 
