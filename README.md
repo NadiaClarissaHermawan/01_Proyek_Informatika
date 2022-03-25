@@ -122,7 +122,7 @@ For example:
        - If searched train don't exist:
          - Returns 404 code and "train not found" message
        - When filled with different data types for example: id, sharing-tracks or grade-crossing with other values than boolean:
-         - Returns 404 code and "failed when edit train" message
+         - Returns 400 code and "failed when edit train" message
 2. Endpoint to create a new train
    - Method: POST
    - Url: /api/trains/
