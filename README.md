@@ -106,7 +106,7 @@ For example:
 1. Endpoint to edit existing train by id
    - Method: PUT
    - Url: /api/trains/:id
-   - Body request needed:
+   - Body request allows to change all fields:
      - name: String
      - description: String
      - distance-between-stop: String
