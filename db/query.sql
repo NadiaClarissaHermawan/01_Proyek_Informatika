@@ -30,9 +30,3 @@ INSERT INTO trains VALUES (2,'Rapid transit','Rapid transit, which is also known
 INSERT INTO trains VALUES (3,'Commuter rail','Commuter trains generally mean trains connecting suburban areas with the central city and primarily serves riders to and from work. Commuter trains typically run on weekdays, during rush hours, and only in the peak directions.','1 to 2 miles','79 mph','true','true', '15 minutes to hourly (some operate only during weekday peak hours)','Restroom');
 INSERT INTO trains VALUES (4,'Inter-city rail','Inter-city trains generally mean trains traveling long distances connecting metropolitan areas. Although the distances covered by some of these trains are comparable to airlines, inter-city trains generally operate at highway speed. Long distance inter-city trains may provide amenities not found on most other forms of transportation, including sleeper-cars and cafe/dining cars.','2 to 10 miles','79 mph','true','true', 'Hourly to once a day, or even three trips a week.','Restroom, business class, sleeper (longer distance), cafe car, dining car');
 INSERT INTO trains VALUES (5,'High speed rail','High speed trains are generally defined as trains that can operate 125mph or faster. High speed trains generally connect large metropolitan areas (with very few stops in between) and are meant to be competitive with airlines in terms of overall travel time.','at least 10 miles','at least 90 mph','false','false', '15 minutes to hourly','Restroom, business class, cafe car');
-
-
-
-
-
-
