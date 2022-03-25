@@ -82,15 +82,10 @@ public class TrainController {
             Boolean gradeCrossing=train.isGradecrossing();
             String frequency=train.getTrainfrequency();
             String amenities=train.getAmenities();
-            Boolean valid=true;
-            if(id==null||name==null||desc==null||distance==null||maxSpeed==null||sharingTracks==null|gradeCrossing==null||frequency==null||amenities==null){
+            boolean valid=true;
+            if(id==null||name==null||desc==null||distance==null||maxSpeed==null||sharingTracks==null||gradeCrossing==null||frequency==null||amenities==null){
                 valid=false;
             }
-            System.out.println(id);
-            System.out.println(name);
-            System.out.println(desc);
-            System.out.println(sharingTracks);
-
             if(valid==true){
                 trainRepository.save(new Train(train.getId(), train.getName(), train.getDescription(), train.getDistancebetweenstop(), train.getMaxspeed(), train.isSharingtracks(), train.isGradecrossing(), train.getTrainfrequency(), train.getAmenities()));
                 response.put("message", "new train added successfully");
@@ -100,6 +95,7 @@ public class TrainController {
                 response.put("message", "failed validation");
                 return new ResponseEntity<>(response, BAD_REQUEST);
             }
+
 
         } catch (Exception e) {
             response.put("message", "failed validation");
