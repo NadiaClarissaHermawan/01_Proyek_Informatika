@@ -73,9 +73,33 @@ public class TrainController {
         try {
             //DIRUBAH COUNT +1 JADI TRAIN>.Id
             //trainRepository.count() + 1
-            trainRepository.save(new Train(train.getId(), train.getName(), train.getDescription(), train.getDistancebetweenstop(), train.getMaxspeed(), train.isSharingtracks(), train.isGradecrossing(), train.getTrainfrequency(), train.getAmenities()));
-            response.put("message", "new train added successfully");
-            return new ResponseEntity<>(response, HttpStatus.CREATED);
+            Long id=train.getId();
+            String name=train.getName();
+            String desc=train.getDescription();
+            String distance=train.getDistancebetweenstop();
+            String maxSpeed=train.getMaxspeed();
+            Boolean sharingTracks=train.isSharingtracks();
+            Boolean gradeCrossing=train.isGradecrossing();
+            String frequency=train.getTrainfrequency();
+            String amenities=train.getAmenities();
+            Boolean valid=true;
+            if(id==null||name==null||desc==null||distance==null||maxSpeed==null||sharingTracks==null|gradeCrossing==null||frequency==null||amenities==null){
+                valid=false;
+            }
+            System.out.println(id);
+            System.out.println(name);
+            System.out.println(desc);
+            System.out.println(sharingTracks);
+
+            if(valid==true){
+                trainRepository.save(new Train(train.getId(), train.getName(), train.getDescription(), train.getDistancebetweenstop(), train.getMaxspeed(), train.isSharingtracks(), train.isGradecrossing(), train.getTrainfrequency(), train.getAmenities()));
+                response.put("message", "new train added successfully");
+                return new ResponseEntity<>(response, HttpStatus.CREATED);
+            }
+            else{
+                response.put("message", "failed validation");
+                return new ResponseEntity<>(response, BAD_REQUEST);
+            }
 
         } catch (Exception e) {
             response.put("message", "failed validation");
