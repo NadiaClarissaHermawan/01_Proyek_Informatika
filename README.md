@@ -26,7 +26,7 @@ The reference that is being used to work on this project comes from this [link](
 
 ## How To Run the Project:
 ### 1. Preconditions:
-1. Make sure the JDK 8 bin and Maven bin directory is in the System Environment Variables Path. If they're not there, then create new System Variable Path towards JDK 8 bin and Maven bin.
+1. Make sure the JDK 8 bin and Maven bin directory is in the System Environment Path. If they're not there, then create new System Variable Path towards JDK 8 bin and Maven bin.
 2. Make sure you have a variable named JAVA_HOME, containing JDK 8 bin directory, and variables named MAVEN_HOME and M2_HOME containing maven directory. If you don't have the mentioned variables, then create one with their respective directory values.
 2. Open [db/query.sql](https://github.com/NadiaClarissaHermawan/01_Proyek_Informatika/blob/master/db/query.sql) in the db folder. Copy and paste all the commands there into psql. 
 3. Customize the datasource.url, datasource.username, and datasource.password value in the application.properties according to your own database.
