@@ -148,10 +148,12 @@ For example:
      - Error:
        - When adding fields and values that do not exists, for example:
         <pre>
+        {
         "id": 11,
         "name-new": "name ODD",
         "description-new": "description ODD",
         returns 400 code and "failed validation" message
+        }
         </pre>
    - Example:
 
