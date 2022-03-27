@@ -154,7 +154,7 @@ For example:
         "description-new": "description ODD"
         }
         </pre>
-         - returns 400 code and "failed validation" message
+          - returns 400 code and "failed validation" message
 - Example:
 
 ![Example of endpoint url](images/localhost_url_example.PNG)
