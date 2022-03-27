@@ -166,5 +166,5 @@ For example:
 2. type : taskkill /F /PID "task_id"
 
 ### Method 2
-1. Open cmd, type: ctrl+c, then press enter
+1. Open cmd, type: ctrl+c
 2. when prompted, type y, then press enter
