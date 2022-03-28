@@ -25,4 +25,4 @@
 /.nb-gradle/
 
 #ini untuk ignore app props tp di comment dl buat balikin ke kondisi semula
-*application.properties
+bullettrain/src/main/resources/application.properties
