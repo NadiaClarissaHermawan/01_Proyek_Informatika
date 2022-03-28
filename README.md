@@ -28,12 +28,12 @@ The reference that is being used to work on this project comes from this [link](
 ### 1. Preconditions:
 1. Make sure the JDK 8 bin and Maven bin directory is in the System Variables Path. If they're not there, then create new System Variable Path towards JDK 8 bin and Maven bin.
 2. Make sure you have a variable named JAVA_HOME, containing JDK 8 directory, and variables named MAVEN_HOME and M2_HOME containing maven directory in the User Variables. If you don't have the mentioned variables, then create one with their respective directory values.
-2. Open [db/query.sql](https://github.com/NadiaClarissaHermawan/01_Proyek_Informatika/blob/master/db/query.sql) in the db folder. Copy and paste all the commands there into psql. 
-3. Customize the datasource.url, datasource.username, and datasource.password value in the application.properties according to your own database.
-These are the directories of the application.properties for each difficulty levels:
- - Childhood dream (easy): [childhooddream/src/main/resources/application.properties](https://github.com/NadiaClarissaHermawan/01_Proyek_Informatika/blob/master/childhooddream/src/main/resources/application.properties)
-  - Bullet train (medium): [bullettrain/src/main/resources/application.properties](https://github.com/NadiaClarissaHermawan/01_Proyek_Informatika/blob/master/bullettrain/src/main/resources/application.properties)
-  - Old train (hard): [oldtrain/src/main/resources/application.properties](https://github.com/NadiaClarissaHermawan/01_Proyek_Informatika/blob/master/oldtrain/src/main/resources/application.properties)
+3. Open [db/query.sql](https://github.com/NadiaClarissaHermawan/01_Proyek_Informatika/blob/master/db/query.sql) in the db folder. Copy and paste all the commands there into psql. 
+4. Open the application.example.properties file, and copy it. Paste the file to the src/main/resources folder respective to the challenge's difficulty. Rename the pasted file to "application.properties" (without the ""). These are the directories of the application.example.properties for each difficulty levels:
+ - Childhood dream (easy): [childhooddream/src/main/resources/application.example.properties](https://github.com/NadiaClarissaHermawan/01_Proyek_Informatika/blob/master/childhooddream/src/main/resources/application.example.properties)
+  - Bullet train (medium): [bullettrain/src/main/resources/application.example.properties](https://github.com/NadiaClarissaHermawan/01_Proyek_Informatika/blob/master/bullettrain/src/main/resources/application.example.properties)
+  - Old train (hard): [oldtrain/src/main/resources/application.example.properties](https://github.com/NadiaClarissaHermawan/01_Proyek_Informatika/blob/master/oldtrain/src/main/resources/application.example.properties)
+5. Customize the datasource.url, datasource.username, and datasource.password value in the application.properties according to your own database.
 
 ### 2. How To Activate the API :
 
