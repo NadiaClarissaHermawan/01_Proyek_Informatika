@@ -24,4 +24,5 @@
 /nbdist/
 /.nb-gradle/
 
-*application.properties
+#ini untuk ignore app props tp di comment dl buat balikin ke kondisi semula
+#*application.properties
