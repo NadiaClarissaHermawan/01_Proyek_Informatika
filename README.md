@@ -151,7 +151,7 @@ For example:
         {
         "id": 11,
         "name-new": "name ODD",
-        "description-new": "description ODD"
+        "description-new": "description ODD",
         }
         </pre>
           - returns 400 code and "failed validation" message
