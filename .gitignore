@@ -26,3 +26,5 @@
 
 #ini untuk ignore app props tp di comment dl buat balikin ke kondisi semula
 /bullettrain/src/main/resources/application.properties
+/childhooddream/src/main/resources/application.properties
+/oldtrain/src/main/resources/application.properties
