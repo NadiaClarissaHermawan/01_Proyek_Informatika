@@ -163,9 +163,18 @@ For example:
 ## How to Kill Task :
 
 ### Method 1
+1. Open cmd, type: ctrl+c
+2. when prompted, type y, then press enter
+
+### Method 2 (For "Task")
 1. Open cmd, type : netstat -ano | findstr 8080
 2. type : taskkill /F /PID "task_id"
 
-### Method 2
-1. Open cmd, type: ctrl+c
-2. when prompted, type y, then press enter
+## How to Check Changes In the Database
+1. Open pgAdmin4
+2. Enter password
+3. Open trainapi database
+4. Right click on schema option
+5. Open Query Tools
+6. Type "SELECT * FROM trains" (without the quotation mark)
+7. Press f5 button to execute the query from step 6
