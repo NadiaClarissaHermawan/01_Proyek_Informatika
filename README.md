@@ -160,7 +160,7 @@ For example:
 
 ![Example of endpoint url](images/localhost_url_example.PNG)
   
-## How to Kill Task :
+# How to Kill Task :
 
 ### Method 1
 1. Open cmd, type: ctrl+c
