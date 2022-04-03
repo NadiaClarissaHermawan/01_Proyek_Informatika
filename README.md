@@ -49,7 +49,7 @@ For example:
 ![Example of TomcatWebServer port number](images/tomcat_port_example.jpg)
 
 2. You can then use the endpoints from this API according to the endpoints explained in the Topcoder challenge respective to their difficulty levels.
-3. If the API works very slowly, kill the API task, and run it again. Refer to "How to Kill Task" Section in order to kill the task.
+3. If the API works very slowly, kill the API task, and run it again. [Refer to How to Kill Task](##how-to-kill-task-:) Section in order to kill the task.
 <!--refer balik ke section difficulty-->
  ### Childhood Dream (easy difficulty)
  1. Endpoint to view all trains 
